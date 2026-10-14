@@ -6,7 +6,7 @@ The application aims to make initial resume screening more efficient by presenti
 
 ## Live Demo
 
-**[Try ResumeAI Online](https://resumeai-yvrxjjamyj539kb9tvmzsrz4.streamlit.app/)**
+**[Try ResumeAI Online](https://resumeai-yvrxjamyj539kb9tvmszr4.streamlit.app/)**
 
 ## Features
 
