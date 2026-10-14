@@ -7,14 +7,15 @@ The application aims to make initial resume screening more efficient by presenti
 ## Features
 
 - **Resume Parsing:** Extract text from PDF and DOCX resumes.
-- **AI-Powered Analysis:** Use the Groq API to analyze resumes against job descriptions.
+- **AI-Powered Analysis:** Analyze resumes against job descriptions using Generative AI.
 - **Skill Extraction:** Identify relevant skills mentioned in a candidate's resume.
-- **Skill Matching:** Compare candidate skills with the required skills in a job description.
+- **Skill Matching:** Compare candidate skills with the requirements in a job description.
 - **Missing Skills Identification:** Highlight required skills that are not matched.
 - **Match Score:** Calculate a percentage based on matched required skills.
 - **Candidate Summary:** Generate a concise summary of relevant qualifications.
 - **Structured Validation:** Validate AI-generated results using Pydantic.
 - **Error Handling:** Handle analysis errors and invalid resume files.
+- **PDF Reports:** Generate downloadable screening reports.
 
 ## Tech Stack
 
@@ -26,20 +27,20 @@ The application aims to make initial resume screening more efficient by presenti
 | PyMuPDF | PDF text extraction |
 | python-docx | DOCX document parsing |
 | Pydantic | Data validation |
-| python-dotenv | Local environment variable management |
+| python-dotenv | Local environment configuration |
 | ReportLab | PDF report generation |
 
 ## How It Works
 
-1. The user uploads a resume in PDF or DOCX format.
+1. Upload a resume in PDF or DOCX format.
 2. The application extracts readable text from the resume.
-3. The user provides a job description.
-4. The Groq API analyzes the resume against the job requirements.
-5. The application processes and validates the structured AI response.
+3. Provide the job description.
+4. The AI analyzes the resume against the job requirements.
+5. The application validates and processes the analysis results.
 6. Python calculates the match score using matched required skills.
-7. The application displays the candidate summary, matched skills, missing skills, strengths, and other analysis results.
+7. View the candidate summary, matched skills, missing skills, strengths, and other analysis results.
 
-### Match Score Calculation
+## Match Score Calculation
 
 The application calculates the score using:
 
@@ -58,20 +59,19 @@ ResumeAI/
 ├── resume_parser.py
 ├── schemas.py
 ├── requirements.txt
-├── .gitignore
-└── .env                 # Local secrets; not committed
+└── .gitignore
 ```
 
 ## Installation and Setup
 
-### 1. Clone the repository
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/Priyanshugitnegi/ResumeAI.git
 cd ResumeAI
 ```
 
-### 2. Create a virtual environment
+### 2. Create a Virtual Environment
 
 On Windows:
 
@@ -79,39 +79,29 @@ On Windows:
 python -m venv venv
 ```
 
-Activate it:
+Activate the environment:
 
 ```powershell
 .\venv\Scripts\Activate.ps1
 ```
 
-### 3. Install dependencies
+### 3. Install Dependencies
 
 ```bash
 python -m pip install -r requirements.txt
 ```
 
-### 4. Configure the Groq API key
+### 4. Configure the Application
 
-Create a `.env` file in the project root:
+Configure the required environment variables locally before running the application. Keep credentials out of source code and version control.
 
-```env
-GROQ_API_KEY=your_groq_api_key_here
-```
-
-Replace the placeholder with your own API key.
-
-**Never commit your `.env` file or expose your API key in public source code.**
-
-For Streamlit Cloud, configure `GROQ_API_KEY` through the application's Secrets settings.
-
-### 5. Run the application
+### 5. Run the Application
 
 ```bash
 streamlit run app.py
 ```
 
-Open the local URL displayed in the terminal.
+Open the local URL displayed in the terminal to use the application.
 
 ## Testing
 
@@ -122,7 +112,7 @@ The application can be tested with:
 - An invalid PDF to test error handling.
 - Different job descriptions to evaluate how requirements affect the analysis.
 
-AI-generated results may vary. Review the identified skills and score for accuracy before relying on the output.
+AI-generated results may vary. Review the identified skills and match score for accuracy before relying on the output.
 
 ## Limitations
 
@@ -136,15 +126,15 @@ AI-generated results may vary. Review the identified skills and score for accura
 
 - More comprehensive automated testing.
 - Improved skill normalization and matching accuracy.
-- Downloadable screening reports.
+- Enhanced downloadable screening reports.
 - Support for additional document formats.
-- More detailed analysis history and reporting.
+- Analysis history and reporting features.
 
 ## Security and Responsible Use
 
-- Keep API credentials in environment variables or platform secrets.
+- Keep credentials in environment variables or secure platform settings.
 - Avoid uploading sensitive candidate information without appropriate authorization.
-- Do not use the score as the sole basis for hiring or rejecting a candidate.
+- Do not use the match score as the sole basis for hiring or rejecting a candidate.
 - Review AI-generated results for accuracy and fairness.
 
 ---
