@@ -4,10 +4,14 @@ ResumeAI is an AI-powered resume screening application built with Python, Stream
 
 The application aims to make initial resume screening more efficient by presenting candidate information in a structured and easy-to-understand format.
 
+## Live Demo
+
+**[Try ResumeAI Online](https://resumeai-yvrxjjamyj539kb9tvmzsrz4.streamlit.app/)**
+
 ## Features
 
 - **Resume Parsing:** Extract text from PDF and DOCX resumes.
-- **AI-Powered Analysis:** Analyze resumes against job descriptions using Generative AI.
+- **AI-Powered Analysis:** Analyze resumes against job descriptions using the Groq API.
 - **Skill Extraction:** Identify relevant skills mentioned in a candidate's resume.
 - **Skill Matching:** Compare candidate skills with the requirements in a job description.
 - **Missing Skills Identification:** Highlight required skills that are not matched.
@@ -15,7 +19,7 @@ The application aims to make initial resume screening more efficient by presenti
 - **Candidate Summary:** Generate a concise summary of relevant qualifications.
 - **Structured Validation:** Validate AI-generated results using Pydantic.
 - **Error Handling:** Handle analysis errors and invalid resume files.
-- **PDF Reports:** Generate downloadable screening reports.
+- **PDF Reports:** Generate screening reports in PDF format.
 
 ## Tech Stack
 
@@ -27,18 +31,18 @@ The application aims to make initial resume screening more efficient by presenti
 | PyMuPDF | PDF text extraction |
 | python-docx | DOCX document parsing |
 | Pydantic | Data validation |
-| python-dotenv | Local environment configuration |
+| python-dotenv | Local environment variable management |
 | ReportLab | PDF report generation |
 
 ## How It Works
 
-1. Upload a resume in PDF or DOCX format.
+1. The user uploads a resume in PDF or DOCX format.
 2. The application extracts readable text from the resume.
-3. Provide the job description.
-4. The AI analyzes the resume against the job requirements.
-5. The application validates and processes the analysis results.
+3. The user provides a job description.
+4. The Groq API analyzes the resume against the job requirements.
+5. The application processes and validates the structured AI response.
 6. Python calculates the match score using matched required skills.
-7. View the candidate summary, matched skills, missing skills, strengths, and other analysis results.
+7. The application displays the candidate summary, matched skills, missing skills, strengths, and other analysis results.
 
 ## Match Score Calculation
 
@@ -66,8 +70,9 @@ ResumeAI/
 
 ### 1. Clone the Repository
 
+Clone the project repository from GitHub, then navigate to the project directory.
+
 ```bash
-git clone https://github.com/Priyanshugitnegi/ResumeAI.git
 cd ResumeAI
 ```
 
@@ -93,7 +98,13 @@ python -m pip install -r requirements.txt
 
 ### 4. Configure the Application
 
-Configure the required environment variables locally before running the application. Keep credentials out of source code and version control.
+Configure the required environment variables before running the application. Keep API credentials out of source code and version control.
+
+For local development, use a `.env` file and store the required Groq API key there.
+
+For Streamlit Cloud deployment, configure the required secret through the application's Secrets settings.
+
+**Never publish your actual API key in the README or commit it to GitHub.**
 
 ### 5. Run the Application
 
@@ -132,7 +143,7 @@ AI-generated results may vary. Review the identified skills and match score for 
 
 ## Security and Responsible Use
 
-- Keep credentials in environment variables or secure platform settings.
+- Keep API credentials in environment variables or secure platform settings.
 - Avoid uploading sensitive candidate information without appropriate authorization.
 - Do not use the match score as the sole basis for hiring or rejecting a candidate.
 - Review AI-generated results for accuracy and fairness.
