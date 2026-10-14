@@ -1,4 +1,3 @@
-
 import os
 import json
 import re
@@ -57,6 +56,7 @@ def extract_json(content):
 
     try:
         data = json.loads(content)
+
     except json.JSONDecodeError:
         start = content.find("{")
         end = content.rfind("}")
@@ -84,7 +84,7 @@ def analyze_resume(resume_text, job_description):
 
     if client is None:
         raise ValueError(
-            "GROQ_API_KEY is missing. Check your .env file."
+            "GROQ_API_KEY is missing. Check your environment secrets."
         )
 
     if not resume_text or not resume_text.strip():
@@ -155,9 +155,13 @@ Rules:
         )
 
     except Exception as exc:
+        print(
+            f"Groq analysis error: "
+            f"{type(exc).__name__}: {exc}"
+        )
+
         raise RuntimeError(
-            "Resume analysis failed. Check the Groq API error, "
-            "model availability, API limits, and try again."
+            f"Groq error ({type(exc).__name__}): {exc}"
         ) from exc
 
     # Clean and validate the extracted fields.
@@ -180,6 +184,7 @@ Rules:
         result[field] = clean_list(result.get(field, []))
 
     summary = result.get("summary", "")
+
     result["summary"] = (
         summary.strip() if isinstance(summary, str) else ""
     )
